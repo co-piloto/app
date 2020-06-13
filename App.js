@@ -1,6 +1,11 @@
+import React from 'react';
 import { YellowBox } from 'react-native';
-YellowBox.ignoreWarnings(['Warning']);
+YellowBox.ignoreWarnings([
+  'Warning',
+  'Animated: `useNativeDriver` was not specified. This is a required option and must be explicitly set to `true` or `false`',
+]);
 
+import { Root } from "native-base";
 import { createAppContainer, createSwitchNavigator} from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createStackNavigator } from 'react-navigation-stack';
@@ -75,4 +80,10 @@ const AppSwitchNavigator = createSwitchNavigator({
 
 const AppContainer = createAppContainer(AppSwitchNavigator);
 
-export default AppContainer;
+const App = () => (
+  <Root>
+    <AppContainer />
+  </Root>
+)
+
+export default App;
