@@ -8,6 +8,7 @@ import {
   RootScreen,
   LoginScreen,
   RegisterScreen,
+  HomeScreen,
 } from './src/screens';
 
 // const AppBottomNavigator = createBottomTabNavigator({
@@ -69,7 +70,7 @@ const InitialStackNavigator = createStackNavigator({
 const AppSwitchNavigator = createSwitchNavigator({
   Root: RootScreen,
   Initial: InitialStackNavigator,
-  // App: AppBottomNavigator
+  App: HomeScreen,
 });
 
 const AppContainer = createAppContainer(AppSwitchNavigator);
