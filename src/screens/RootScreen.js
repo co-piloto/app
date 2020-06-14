@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, Image } from 'react-native';
+import { ActivityIndicator, Image, PermissionsAndroid } from 'react-native';
 import { View, Text } from 'native-base';
 import AsyncStorage from '@react-native-community/async-storage';
 import Geolocation from '@react-native-community/geolocation';
@@ -10,6 +10,26 @@ import axios from '../services/axios';
 
 const RootScreen = ({ navigation }) => {
   const [loading, setLoading] = useState(true);
+  const requestGPSPermission = async () => {
+    try {
+      const granted = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+        {
+          title: "Precisamos de acesso a sua localização",
+          message:
+            "Para automatizar algumas tarefas e conseguirmos tranquilizar-lo " +
+            "precisamos de acesso a sua localização.",
+          buttonNegative: "Negar",
+          buttonPositive: "Permitir"
+        }
+      );
+      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+        navigation.navigate('Initial')
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
   useEffect(() => {
     AsyncStorage.getItem('session').then(async (token) => {
       if (token) {
@@ -42,7 +62,7 @@ const RootScreen = ({ navigation }) => {
             <View style={{ height: '100%', width: '80%', justifyContent: 'space-between', paddingVertical: 20 }}>
               <View />
               <View style={{ width: '100%' }}>
-                <Text style={{ color: '#ffffff', fontSize: 30, textAlign: 'center' }}>NOME DO APP</Text>
+                <Text style={{ color: '#ffffff', fontSize: 30, textAlign: 'center' }}>CO-PILOTO</Text>
                 <Text style={{ color: '#ffffff', textAlign: 'center', marginTop: 20 }}>
                   Planeje sua rota, otimize seu tempo e aproveite mais pois a vida é uma só
                 </Text>
@@ -51,11 +71,7 @@ const RootScreen = ({ navigation }) => {
                 type="secondary"
                 title="Começar"
                 style={{ marginTop: 10 }}
-                onPress={async () => {
-                  await Geolocation.getCurrentPosition(() => {
-                    navigation.navigate('Initial')
-                  })
-                }}
+                onPress={async () => requestGPSPermission()}
               />
             </View>
           )}

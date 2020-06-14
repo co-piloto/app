@@ -91,7 +91,7 @@ const HomeScreen = () => {
                     }}
                     value={starting}
                     onChangeText={text => setStarting(text)}
-                    placeholder="Ponto de Origem"
+                    placeholder="Origem"
                     placeholderTextColor="#1d305baa"
                   />
                 </Item>
@@ -114,7 +114,7 @@ const HomeScreen = () => {
                     }}
                     value={ending}
                     onChangeText={text => setEnding(text)}
-                    placeholder="Ponto Final"
+                    placeholder="Destino"
                     placeholderTextColor="#1d305baa"
                   />
                 </Item>
