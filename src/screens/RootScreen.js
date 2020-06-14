@@ -6,18 +6,26 @@ import Geolocation from '@react-native-community/geolocation';
 import { Logo } from '../assets';
 import { DefaultButton } from '../components';
 import { Row, Grid } from 'react-native-easy-grid';
+import axios from '../services/axios';
 
 const RootScreen = ({ navigation }) => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    AsyncStorage.getItem('session').then(session => {
-      if (session) navigation.navigate('App')
+    AsyncStorage.getItem('session').then(async (token) => {
+      if (token) {
+        try {
+          const { data: { user } = {} } = await axios.get('/user', { headers: { Authorization: `Bearer ${token}` } });
+          await AsyncStorage.setItem('user', JSON.stringify(user));
+          navigation.navigate('App');
+        } catch (error) {
+          AsyncStorage.clear();          
+        }
+      }
       setLoading(false);
     });
   }, []);
   return (
     <View style={{ flex: 1 }}>
-      {/* <Image source={Fundo_1} style={{ width: '100%', height: '100%', position: 'absolute', top: 0, left: 0 }} /> */}
       <View style={{ width: '100%', height: '100%', backgroundColor: '#1d305b', position: 'absolute', top: 0, left: 0 }}>
         <View style={{ backgroundColor: 'white', width: '40%', height: 8, position: 'absolute', top: 30, left: 0 }}></View>
         <View style={{ backgroundColor: 'white', width: '60%', height: 8, position: 'absolute', top: 50, left: 0 }}></View>

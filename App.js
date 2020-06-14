@@ -24,7 +24,7 @@ const AppBottomNavigator = createBottomTabNavigator({
     navigationOptions: {
       tabBarLabel: null,
       tabBarIcon: ({ tintColor }) => (
-        <Icon name="home" type="AntDesign" style={{ color: tintColor }} />
+        <Icon name="radar" type="MaterialCommunityIcons" style={{ color: tintColor }} />
       ),
     },
   },
@@ -33,19 +33,10 @@ const AppBottomNavigator = createBottomTabNavigator({
     navigationOptions: {
       tabBarLabel: null,
       tabBarIcon: ({ tintColor }) => (
-        <Icon name="setting" type="AntDesign" style={{ color: tintColor }} />
+        <Icon name="settings" type="MaterialCommunityIcons" style={{ color: tintColor }} />
       ),
     },
   },
-  // Perfil: {
-  //   screen: PerfilScreen,
-  //   navigationOptions: {
-  //     tabBarLabel: null,
-  //     tabBarIcon: ({ tintColor }) => (
-  //       <Image source={require('./src/assets/images/escudo.png')} style={{resizeMode: 'cover', width: 40, height: 40, tintColor: tintColor}}/>
-  //     ),
-  //   },
-  // },
 }, {
   tabBarOptions: {
     showLabel: false,

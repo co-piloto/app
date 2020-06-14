@@ -22,7 +22,7 @@ const LoadingModal = () => {
           justifyContent: 'center',
           width: 200,
           height: 140,
-          backgroundColor: '#eeeeee',
+          backgroundColor: '#ffffff',
           borderRadius: 20,
           shadowColor: "#000",
           shadowOffset: {

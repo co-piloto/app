@@ -1,9 +1,10 @@
-import Fundo from './fundo.png';
-import Fundo_1 from './fundo_1b.png'
-import Logo_Fundo from './logo_fundo.png';
-import Logo from './logo_sem_fundo.png';
-import Background from './background_app.jpg';
-import Pin from './pin.png';
+import Fundo from './images/fundo.png';
+import Fundo_1 from './images/fundo_1b.png'
+import Logo_Fundo from './images/logo_fundo.png';
+import Logo from './images/logo_sem_fundo.png';
+import Background from './images/background_app.jpg';
+import Pin from './images/pin.png';
+import Perfil from './images/male.png';
 
 export {
   Fundo,
@@ -12,4 +13,5 @@ export {
   Logo,
   Background,
   Pin,
+  Perfil,
 };

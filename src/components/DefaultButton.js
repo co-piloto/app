@@ -13,7 +13,7 @@ const DefaultButton = ({ onPress, title, type, disabled, style }) => {
         zIndex: 10,
         ...style
       }}
-      onPress={() => onPress()}
+      onPress={() => onPress && onPress()}
     >
       <Text
         style={{
