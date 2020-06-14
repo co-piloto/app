@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, Image } from 'react-native';
 import { View, Text } from 'native-base';
 import AsyncStorage from '@react-native-community/async-storage';
+import Geolocation from '@react-native-community/geolocation';
 import { Logo } from '../assets';
 import { DefaultButton } from '../components';
 import { Row, Grid } from 'react-native-easy-grid';
@@ -42,7 +43,11 @@ const RootScreen = ({ navigation }) => {
                 type="secondary"
                 title="Começar"
                 style={{ marginTop: 10 }}
-                onPress={() => navigation.navigate('Initial')}
+                onPress={async () => {
+                  await Geolocation.getCurrentPosition(() => {
+                    navigation.navigate('Initial')
+                  })
+                }}
               />
             </View>
           )}

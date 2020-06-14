@@ -21,9 +21,9 @@ const LoadingModal = () => {
           alignItems: 'center',
           justifyContent: 'center',
           width: 200,
-          height: 200,
+          height: 140,
           backgroundColor: '#eeeeee',
-          borderRadius: 6,
+          borderRadius: 20,
           shadowColor: "#000",
           shadowOffset: {
             width: 0,

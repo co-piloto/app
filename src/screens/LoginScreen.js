@@ -7,6 +7,7 @@ import axios from '../services/axios';
 import { cleanNumber } from '../utils';
 import AsyncStorage from '@react-native-community/async-storage';
 import { DefaultButton, LoadingModal } from '../components';
+import { Background, Logo } from '../assets';
 
 const LoginScreen = ({ navigation }) => {
   const [loading, setLoading] = useState(false);
@@ -38,21 +39,25 @@ const LoginScreen = ({ navigation }) => {
 
   return (
     <Container>
-      <Content contentContainerStyle={{ flex: 1 }}>
+      <Content contentContainerStyle={{ flex: 1, backgroundColor: '#ffffff' }}>
+        <Image
+          source={Background}
+          style={{ width: '100%', height: '100%', position: 'absolute', top: 0, left: 0, opacity: .3}}
+        />
         {loading && (
           <LoadingModal />
         )}
         <Grid>
-          <Row style={{ alignItems: 'center', justifyContent: 'center' }}>
+          <Row style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
             <Image
-              style={{ width: 300, height: 200, resizeMode: 'contain' }}
-              source={{ uri: 'https://i.makeagif.com/media/9-14-2015/ojOCpy.gif' }}
+              style={{ width: 340, height: 340, resizeMode: 'contain', borderRadius: 20, tintColor: '#1d305b' }}
+              source={Logo}
             />
           </Row>
           <Row style={{ alignItems: 'center', justifyContent: 'space-between', paddingVertical: 20, flexDirection: 'column' }}>
             <View />
             <Form style={{ width: '80%' }}>
-              <Item rounded style={{ marginLeft: 0, marginBottom: 10, justifyContent: 'space-between' }} error={['email', 'all'].includes(formError)}>
+              <Item rounded style={{ borderColor: '#1d305b', marginLeft: 0, marginBottom: 10, justifyContent: 'space-between' }} error={['email', 'all'].includes(formError)}>
                 <TextInputMask
                   type={'cel-phone'}
                   options={{
@@ -61,8 +66,9 @@ const LoginScreen = ({ navigation }) => {
                     dddMask: '(99) ',
                   }}
                   placeholder="Número do celular"
-                  placeholderTextColor="#4f4f4f"
+                  placeholderTextColor="#1d305baa"
                   style={{
+                    color: '#1d305b',
                     fontSize: 16,
                     paddingLeft: 16,
                   }}
@@ -76,11 +82,12 @@ const LoginScreen = ({ navigation }) => {
                   <Icon name='close-circle' style={{ marginRight: 10 }} />
                 )}
               </Item>
-              <Item rounded style={{ marginLeft: 0, marginBottom: 10 }} error={['password', 'all'].includes(formError)}>
+              <Item rounded style={{ borderColor: '#1d305b', marginLeft: 0, marginBottom: 10 }} error={['password', 'all'].includes(formError)}>
                 <Input
                   style={{
                     fontSize: 16,
                     paddingLeft: 16,
+                    color: '#1d305b',
                   }}
                   value={password}
                   onChangeText={text => {
@@ -88,7 +95,7 @@ const LoginScreen = ({ navigation }) => {
                     if (formError !== '') setFormError('');
                   }}
                   placeholder="Senha"
-                  placeholderTextColor="#4f4f4f"
+                  placeholderTextColor="#1d305baa"
                   secureTextEntry
                 />
                 {['password', 'all'].includes(formError) && (

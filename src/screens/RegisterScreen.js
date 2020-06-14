@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Image } from 'react-native';
-import { View, Container, Content, Form, Item, Input, Icon, Toast } from 'native-base';
+import { View, Container, Content, Form, Item, Input, Icon, Toast, Text } from 'native-base';
 import { TextInputMask } from 'react-native-masked-text'
 import { Row, Grid } from 'react-native-easy-grid';
 import axios from '../services/axios';
@@ -28,11 +28,9 @@ const RegisterScreen = ({ navigation }) => {
         password,
       });
       setLoading(false);
-      console.log(data);
       await AsyncStorage.setItem('session', data.token);
       navigation.navigate('Root');
     } catch (error) {
-      console.log(error);
       setLoading(false);
       Toast.show({
         text: 'Erro ao realizar cadastro',
@@ -49,13 +47,12 @@ const RegisterScreen = ({ navigation }) => {
         )}
         <Grid>
           <Row style={{ alignItems: 'center', justifyContent: 'space-between', paddingVertical: 20, flexDirection: 'column' }}>
-            <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-              <Image
-                style={{ width: 300, height: 200, resizeMode: 'contain' }}
-                source={{ uri: 'https://i.makeagif.com/media/9-14-2015/ojOCpy.gif' }}
-              />
-            </View>
+            <View />
             <Form style={{ width: '80%' }}>
+              <View style={{ width: '100%', marginBottom: 40 }}>
+                <Text style={{ alignSelf: 'flex-end', marginBottom: 10, fontSize: 24, color: '#1d305b' }}>VAMOS COMEÇAR!</Text>
+                <Text style={{ color: '#1d305b' }}>Precisamos de algumas informações para cadastra-lo em nossa plataforma</Text>
+              </View>
               <Item rounded style={{ marginLeft: 0, marginBottom: 10 }} error={formError === 'name'}>
                 <Input
                   style={{

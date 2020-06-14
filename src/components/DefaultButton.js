@@ -9,6 +9,7 @@ const DefaultButton = ({ onPress, title, type, disabled, style }) => {
         borderRadius: 50,
         backgroundColor: type === 'secondary' ? '#ffffff' : '#1d305b',
         borderWidth: 1,
+        height: 54,
         zIndex: 10,
         ...style
       }}
