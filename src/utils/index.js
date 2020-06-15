@@ -1,3 +1,5 @@
+import { api_key } from './secret';
+
 const cleanNumber = (number) => number.replace(/\D/g, "");
 
 const mapStyle = [
@@ -234,7 +236,22 @@ const mapStyle = [
   }
 ]
 
+const calculateAverage = (a, b) => {
+  return (a + b) / 2;
+}
+
+const calculateDiff = (a, b) => {
+  if( a > b) return a - b;
+  else if( b > a) return b - a;
+}
+
+const translateDate = (date) => `${(date.getDate() < 10 ? '0' : '')}${date.getDate()}/${(date.getMonth() + 1 < 10 ? '0' : '')}${date.getMonth() + 1}/${date.getFullYear()}`
+
 export {
   cleanNumber,
   mapStyle,
+  calculateDiff,
+  calculateAverage,
+  translateDate,
+  api_key,
 }
